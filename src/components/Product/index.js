@@ -1,9 +1,11 @@
-import { ProductHeader, StyledProduct, StyledSubtitle } from './styled';
+import { ProductHeader, StyledProduct, StyledSubtitle, TrashImg } from './styled';
+import trashImg from '../../assets/trash.svg';
 
-const Product = ({ product }) => {
+const Product = ({ product, onDelete }) => {
   return (
     <StyledProduct>
-      <img src={product.productImage} alt={product.Artikelnummer}/>
+      <TrashImg src={trashImg} onClick={onDelete}/>
+      <img src={product.productImage} alt={product.sku}/>
       <ProductHeader>
         {product.name}
       </ProductHeader>

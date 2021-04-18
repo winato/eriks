@@ -9,6 +9,7 @@ const ProductHeader = styled.h4`
 const StyledProduct = styled.div`
   margin: 0;
   text-align: left;
+  position: relative;
 `
 
 const StyledSubtitle = styled.p`
@@ -18,8 +19,18 @@ const StyledSubtitle = styled.p`
   margin: .25rem 0;
 `
 
+const TrashImg = styled.img`
+  width: 1.1rem;
+  height: 1.1rem;
+  right: 0;
+  top: 0;
+  position: absolute;
+  cursor: pointer;
+`
+
 export {
   ProductHeader,
   StyledProduct,
   StyledSubtitle,
+  TrashImg,
 }
