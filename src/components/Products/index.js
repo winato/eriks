@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
-import { Heading, BlueBorder } from './styled';
+import { Heading, BlueBorder, HideOnDesktop } from './styled';
 import ProductsTable from './ProductsTable';
+import ProductsSidebar from '../ProductsSidebar';
 
 const Products = () => {
 const [products, setProduct] = useState([]);
@@ -54,6 +55,9 @@ const areDifferent = (array, field) => {
       <Heading>
         {products.length} producten vergelijken
       </Heading>
+      <HideOnDesktop>
+        <ProductsSidebar products={initialProducts} onChange={onFiltersChange}/>
+      </HideOnDesktop>
       <ProductsTable
         initialProducts={initialProducts}
         fields={fields}

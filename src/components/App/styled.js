@@ -13,11 +13,11 @@ const GlobalStyles = createGlobalStyle`
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     text-align: left;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   html {
-    overflow: hidden;
+    overflow-x: hidden;
   }
 `
 

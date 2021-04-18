@@ -1,5 +1,13 @@
 import React from 'react'
-import { ProductsHolder, StyledTable, StyledTd, StyledTh, StyledTr, EmptyTable } from './styled';
+import {
+  ProductsHolder,
+  StyledTable,
+  StyledTd,
+  StyledTh,
+  StyledTr,
+  EmptyTable,
+  StyledFieldLabel,
+} from './styled';
 import Product from '../Product';
 import ProductsSidebar from '../ProductsSidebar';
 import Badges from './Badges.js';
@@ -16,7 +24,7 @@ export default function ProductsTable({
       <StyledTable>
         <thead>
           <StyledTr>
-            <StyledTh paddignRight={Boolean(products.length)} width="300px">
+            <StyledTh hideOnMobile paddignRight={Boolean(products.length)} width="300px">
               <ProductsSidebar products={initialProducts} onChange={onFiltersChange}/>
             </StyledTh>
             {
@@ -32,8 +40,8 @@ export default function ProductsTable({
           <StyledTr>
             { 
               products.length
-              ? 
-              <StyledTd paddignRight width="300px">
+              ?
+              <StyledTd hideOnMobile paddignRight width="300px">
                 Keurmerk
               </StyledTd>
               : null
@@ -50,12 +58,15 @@ export default function ProductsTable({
             products.length 
             ? fields.map((field) => (
               <StyledTr different={areDifferent(products, field)} key={field.sku}>
-                <StyledTd paddignRight>
+                <StyledTd paddignRight hideOnMobile>
                   {field}
                 </StyledTd>
                 {
                   products.map((product) => (
                     <StyledTd key={product.sku} bold>
+                      <StyledFieldLabel>
+                        {field}: 
+                      </StyledFieldLabel>
                       {product[field]}
                     </StyledTd>
                   ))

@@ -8,8 +8,12 @@ const Heading = styled.h1`
   color: ${blueColor};
 `
 const ProductsHolder = styled.div`
+  overflow-x: auto;
   display: flex;
   padding-bottom: 2rem;
+  @media (min-width: 576px) {
+    overflow-x: hidden;
+  }
 `
 
 const BlueBorder = styled.div`
@@ -20,9 +24,11 @@ const BlueBorder = styled.div`
 const StyledTable = styled.table`
   width: 100%;
   border-top: 1px solid ${borderColor};
-  table-layout: fixed;
   padding: 1.2rem;
   border-collapse: collapse;
+  @media (min-width: 576px) {
+    table-layout: fixed;
+  }
 `
 
 const StyledTd = styled.td`
@@ -30,6 +36,10 @@ const StyledTd = styled.td`
   border-right: 1px solid ${(props) => props.paddignRight ? borderColor : 'transparent'};
   font-weight: ${(props) => props.bold ? 'bold' : 'normal'};
   width: ${(props) => props.width};
+  display: ${(props) => props.hideOnMobile ? 'none' : 'table-cell'};
+  @media (min-width: 576px) {
+    display: table-cell;
+  }
 `
 
 const StyledTr = styled.tr`
@@ -43,6 +53,10 @@ const StyledTr = styled.tr`
 const StyledTh = styled.th`
   padding: .8rem 1rem;
   border-right: 1px solid ${(props) => props.paddignRight ? borderColor : 'transparent'};
+  display: ${(props) => props.hideOnMobile ? 'none' : 'table-cell'};
+  @media (min-width: 576px) {
+    display: table-cell;
+  }
 `
 
 const StyledBadge = styled.div`
@@ -56,6 +70,20 @@ const EmptyTable = styled.tr`
   text-align: center;
 `
 
+const StyledFieldLabel = styled.span`
+  padding-right: .4rem;
+  @media (min-width: 576px) {
+    display: none;
+  }
+`
+
+const HideOnDesktop = styled.span`
+  display: block;
+  @media (min-width: 576px) {
+    display: none;
+  }
+`
+
 export {
   Heading,
   ProductsHolder,
@@ -66,4 +94,6 @@ export {
   StyledBadge,
   EmptyTable,
   BlueBorder,
+  StyledFieldLabel,
+  HideOnDesktop,
 }
