@@ -11,7 +11,7 @@ const ProductsHolder = styled.div`
   overflow-x: auto;
   display: flex;
   padding-bottom: 2rem;
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     overflow-x: hidden;
   }
 `
@@ -26,7 +26,7 @@ const StyledTable = styled.table`
   border-top: 1px solid ${borderColor};
   padding: 1.2rem;
   border-collapse: collapse;
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     table-layout: fixed;
   }
 `
@@ -37,7 +37,7 @@ const StyledTd = styled.td`
   font-weight: ${(props) => props.bold ? 'bold' : 'normal'};
   width: ${(props) => props.width};
   display: ${(props) => props.hideOnMobile ? 'none' : 'table-cell'};
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     display: table-cell;
   }
 `
@@ -54,7 +54,7 @@ const StyledTh = styled.th`
   padding: .8rem 1rem;
   border-right: 1px solid ${(props) => props.paddignRight ? borderColor : 'transparent'};
   display: ${(props) => props.hideOnMobile ? 'none' : 'table-cell'};
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     display: table-cell;
   }
 `
@@ -72,14 +72,14 @@ const EmptyTable = styled.tr`
 
 const StyledFieldLabel = styled.span`
   padding-right: .4rem;
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `
 
 const HideOnDesktop = styled.span`
   display: block;
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `

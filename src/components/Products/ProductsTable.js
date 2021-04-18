@@ -56,8 +56,10 @@ export default function ProductsTable({
           </StyledTr>
           {
             products.length 
-            ? fields.map((field) => (
-              <StyledTr different={areDifferent(products, field)} key={field.sku}>
+            ? fields.map((field, index) => (
+              <StyledTr
+                different={areDifferent(products, field)} key={field.name + field}
+              >
                 <StyledTd paddignRight hideOnMobile>
                   {field}
                 </StyledTd>
