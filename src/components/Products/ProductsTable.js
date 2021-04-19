@@ -18,19 +18,33 @@ export default function ProductsTable({
   onFiltersChange,
   initialProducts,
   areDifferent,
+  selected,
+  onDelete,
 }) {
   return (
     <ProductsHolder>
-      <StyledTable>
+      <StyledTable empty={!products.length}>
         <thead>
           <StyledTr>
-            <StyledTh hideOnMobile paddignRight={Boolean(products.length)} width="300px">
-              <ProductsSidebar products={initialProducts} onChange={onFiltersChange}/>
+            <StyledTh
+              hideOnMobile
+              paddignRight={Boolean(products.length)}
+              width="300px"
+              alignTop
+            >
+              <ProductsSidebar
+                products={initialProducts}
+                onChange={onFiltersChange}
+                selected={selected}
+              />
             </StyledTh>
             {
               products.map((product) => (
-                <StyledTh key={product.sku}>
-                  <Product product={product}/>
+                <StyledTh key={product.sku} alignTop>
+                  <Product
+                    product={product}
+                    onDelete={onDelete}
+                  />
                 </StyledTh>
               ))
             }
@@ -58,9 +72,13 @@ export default function ProductsTable({
             products.length 
             ? fields.map((field) => (
               <StyledTr
-                different={areDifferent(products, field)} key={field.name + field}
+                different={areDifferent(products, field)}
+                key={field.name + field}
               >
-                <StyledTd paddignRight hideOnMobile>
+                <StyledTd
+                  paddignRight
+                  hideOnMobile
+                >
                   {field}
                 </StyledTd>
                 {

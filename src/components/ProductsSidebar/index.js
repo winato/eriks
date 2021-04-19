@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { Sidebar, Heading } from './styled';
+import React from 'react'
+import { Heading } from './styled';
 import Checkbox from '../common/Checkbox/Checkbox';
 
-export default function ProductsSidebar({ products, onChange }) {
-  const [selected, setSelected] = useState([]);
-
+export default function ProductsSidebar({ products, onChange, selected }) {
   const handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -12,31 +10,24 @@ export default function ProductsSidebar({ products, onChange }) {
 
     if (value) {
       const newArray = [...selected, name]
-      setSelected(newArray);
       onChange(newArray)
     } else {
       const removed = selected.filter((item) => item !== name);
-      setSelected(removed);
       onChange(removed);
     }
   }
-
-  useEffect(() => {
-    if (!products.length) return;
-
-    const skus = products.map(({ sku }) => sku);
-
-    setSelected(skus);
-
-  }, [products]);
 
   const checked = (sku) => {
     return selected.includes(sku);
   }
 
   return (
-    <Sidebar>
-      <Heading>je selectie</Heading>
+    <div>
+      {
+        products.length
+        ? <Heading>je selectie</Heading>
+        : null
+      }
       {
         products.map((product) => (
           <Checkbox
@@ -48,6 +39,6 @@ export default function ProductsSidebar({ products, onChange }) {
           />
         ))
       }
-    </Sidebar>
+    </div>
   )
 }

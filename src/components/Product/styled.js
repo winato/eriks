@@ -27,10 +27,15 @@ const TrashImg = styled.img`
   position: absolute;
   cursor: pointer;
 `
+const ProductImage = styled.img`
+  max-width: 100%;
+  max-height: 200px;
+`
 
 export {
   ProductHeader,
   StyledProduct,
   StyledSubtitle,
   TrashImg,
+  ProductImage,
 }

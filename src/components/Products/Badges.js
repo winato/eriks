@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyledBadge } from './styled';
+import { StyledBadge, BadgeImg } from './styled';
+import badge from '../../assets/badge.png';
 
 export default function Badges({ badges }) {
   const formattedBadges = badges.split('|');
@@ -7,8 +8,8 @@ export default function Badges({ badges }) {
   return (
     <StyledBadge>
       {
-        formattedBadges.map((badge) => (
-          <img src={badge} key={badge} alt='badge'/>
+        formattedBadges.map((badgeData) => (
+          <BadgeImg src={badge} key={badgeData} alt='badge'/>
         ))
       }
     </StyledBadge>

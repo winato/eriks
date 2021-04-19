@@ -8,6 +8,7 @@ const Products = () => {
 const [products, setProduct] = useState([]);
 const [initialProducts, setInitialProduct] = useState([]);
 const [fields, setFields] = useState([]);
+const [selected, setSelected] = useState([]);
 
 const clearData = (products) => {
   return products.map((product) => {
@@ -42,12 +43,24 @@ const areDifferent = (array, field) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const skus = products.map(({ sku }) => sku);
+
+    setSelected(skus);
+  }, [products])
+
   const onFiltersChange = (array) => {
     const filteredProducts = initialProducts.filter((product) => {
       return array.find((sku) => sku === product.sku);
-    })
+    });
 
     setProduct(filteredProducts)
+  }
+
+  const onDelete = (sku) => {
+    const filterInitial = initialProducts.filter((product) => product.sku !== sku);
+    setInitialProduct(filterInitial);
+    setProduct(filterInitial);
   }
 
   return (
@@ -56,14 +69,20 @@ const areDifferent = (array, field) => {
         {products.length} producten vergelijken
       </Heading>
       <HideOnDesktop>
-        <ProductsSidebar products={initialProducts} onChange={onFiltersChange}/>
+        <ProductsSidebar
+          products={initialProducts}
+          onChange={onFiltersChange}
+          selected={selected}
+        />
       </HideOnDesktop>
       <ProductsTable
         initialProducts={initialProducts}
         fields={fields}
         products={products}
+        selected={selected}
         onFiltersChange={onFiltersChange}
         areDifferent={areDifferent}
+        onDelete={onDelete}
       />
       <BlueBorder/>
     </>
