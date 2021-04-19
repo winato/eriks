@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-const blueColor = '#034ea1';
+import { blueColor } from '../../constants/colors';
 
 const ProductHeader = styled.h4`
   color: ${blueColor};

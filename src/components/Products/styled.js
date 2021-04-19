@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
-const borderColor = '#f2f2f2';
-const blueColor = '#034ea1';
+import { blueColor, borderColor } from '../../constants/colors';
 
 const Heading = styled.h1`
   font-size: 2rem;
